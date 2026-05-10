@@ -7,6 +7,8 @@ Dashboard web pra personal trainer / consultor online gerenciar alunos, renovaç
 > **Setup pela primeira vez?**
 > - **Manual**: siga o [`HANDOFF.md`](HANDOFF.md) — passo-a-passo objetivo de 30 min
 > - **Com Claude Code**: clone este repo, abra com `claude` → o [`CLAUDE.md`](CLAUDE.md) instrui o Claude a te guiar interativamente passo a passo
+>
+> **Quer que o Claude leia/escreva direto na planilha?** Veja [`MCP-SETUP.md`](MCP-SETUP.md) — opcional, +15 min.
 
 ## O que tem
 

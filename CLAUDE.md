@@ -19,6 +19,7 @@ Este é um **dashboard CRM pra personal trainer / consultor online**. Ele lê da
 - `apps-script.gs` — código que vai dentro do Apps Script da planilha
 - `README.md` — visão geral + roadmap
 - `HANDOFF.md` — passo-a-passo detalhado de setup
+- `MCP-SETUP.md` — setup opcional do MCP de Google Sheets (avançado)
 - `CLAUDE.md` — este arquivo
 
 ## Comportamento esperado do Claude
@@ -179,7 +180,27 @@ Em ~30s ele recebe URL `https://NOME-PROJETO.vercel.app`. Cada `git push` daqui 
 
 ---
 
-### Passo 8 — Teste end-to-end
+### Passo 8 — Setup avançado: MCP de Google Sheets (opcional)
+
+Pergunte ao usuário:
+
+> "Quer também configurar o MCP do Google Sheets? Isso permite que eu (Claude) leia e escreva direto na sua planilha durante conversas — útil pra análises customizadas, edições em massa, etc. Setup adicional de ~15 min. Posso te guiar?"
+
+**Se ele topar:**
+- Abra `MCP-SETUP.md` deste repo e siga as instruções **rigorosamente**, um passo por vez
+- O setup envolve: criar projeto Google Cloud, habilitar Sheets/Drive APIs, criar OAuth credentials, clonar `mkummer225/google-sheets-mcp`, build, registrar via `claude mcp add`, primeira autenticação no browser
+- **Atenção crítica:** o `gcp-oauth.keys.json` baixado pelo Google Chrome às vezes vira `gcp-oauth.keys.json.json` (extensão duplicada). Confira/renomeie antes de mover.
+- **Atenção crítica:** o Claude Code precisa ser **reiniciado** depois de registrar o MCP — MCPs novos só carregam ao iniciar.
+- Após autenticar pela primeira vez, considere também configurar `~/.claude/settings.json` com `permissions.allow` pras ferramentas do MCP, pra evitar prompts a cada chamada (o MCP-SETUP.md mostra como).
+
+**Se ele recusar / não quiser agora:**
+- Avise que pode voltar e configurar quando quiser, e siga pro passo 9 (teste end-to-end).
+
+✅ **OK quando:** ele consegue rodar no Claude um comando tipo "lista as abas da minha planilha" e ver resposta correta.
+
+---
+
+### Passo 9 — Teste end-to-end
 
 Pede pra ele testar as 4 ações principais (na ordem):
 
